@@ -1,0 +1,163 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<kml xmlns="http://www.opengis.net/kml/2.2">
+  <Document>
+    <name>青甘大環線 9日 2026年9–10月</name>
+    <description>蘭州 → 青海湖 → 茶卡 → 大柴旦 → 敦煌 → 嘉峪關 → 張掖 → 祁連 → 西寧 → 蘭州</description>
+
+    <Folder>
+      <name>Day 1 · 9/24</name>
+      <Placemark>
+        <name>蘭州中川國際機場 LHW</name>
+        <description>抵達 · 9C7395 09:40</description>
+        <Point><coordinates>103.6208,36.5152,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>青海湖二郎劍景區</name>
+        <description>南岸觀湖 · 趕日落</description>
+        <Point><coordinates>100.495767,36.578633,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>青海湖卡巴倉·措瓊諾日</name>
+        <description>江西溝鄉下社村五社 030 · 1 晚</description>
+        <Point><coordinates>100.468,36.5835,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 2 · 9/25</name>
+      <Placemark>
+        <name>茶卡鹽湖</name>
+        <description>天空之鏡 · 鞋套／白鞋</description>
+        <Point><coordinates>99.0794,36.7528,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>德令哈（經停午餐）</name>
+        <description>加油、洗手間、午餐</description>
+        <Point><coordinates>97.3701,37.3743,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>大柴旦麗呈翠星酒店</name>
+        <description>義海街 9 號 · 連住 2 晚</description>
+        <Point><coordinates>95.3688,37.8538,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 3 · 9/26</name>
+      <Placemark>
+        <name>察爾汗鹽湖</name>
+        <description>鹽橋公路 · 南下格爾木方向</description>
+        <Point><coordinates>95.3,36.814,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>315 國道 U 型公路</name>
+        <description>天空之鏡彎道 · 指定觀景點停車</description>
+        <Point><coordinates>94.152,38.048,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>水上雅丹（烏素特）</name>
+        <description>雅丹倒映湖面 · 自備補給</description>
+        <Point><coordinates>93.48,37.53,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 4 · 9/27</name>
+      <Placemark>
+        <name>大柴旦翡翠湖</name>
+        <description>蒂芙尼藍鹽池群</description>
+        <Point><coordinates>95.3717,37.8389,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>黑獨山</name>
+        <description>黑色火山岩丘 · 隔壁胭脂山</description>
+        <Point><coordinates>94.8028,38.0247,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>煌漠玥民宿 Moon Field</name>
+        <description>月牙泉鎮楊家橋三組 58 號 · 連住 2 晚</description>
+        <Point><coordinates>94.682,40.095,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 5 · 9/28</name>
+      <Placemark>
+        <name>莫高窟</name>
+        <description>務必提前預約 A 類票</description>
+        <Point><coordinates>94.8097,40.0411,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>鳴沙山月牙泉</name>
+        <description>傍晚沙溫較低 · 日落</description>
+        <Point><coordinates>94.6694,40.0925,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 6 · 9/29</name>
+      <Placemark>
+        <name>嘉峪關關城</name>
+        <description>長城西端</description>
+        <Point><coordinates>98.216,39.8015,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>張掖七彩丹霞</name>
+        <description>臨近日落層次最飽</description>
+        <Point><coordinates>100.1332,38.91555,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>望山國際大酒店（張掖西站）</name>
+        <description>新墩鎮雙塔民俗文化村 2–3 號 · 1 晚</description>
+        <Point><coordinates>100.395,38.911,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 7 · 9/30</name>
+      <Placemark>
+        <name>祁連山草原／卓爾山</name>
+        <description>扁都口入青 · 草色轉金</description>
+        <Point><coordinates>100.238,38.196,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>祁連五礦國貿飯店</name>
+        <description>八寶鎮濱河路 · 1 晚</description>
+        <Point><coordinates>100.25,38.1785,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 8 · 10/1</name>
+      <Placemark>
+        <name>崗什卡雪峰觀景台</name>
+        <description>國慶首日 · 早出發</description>
+        <Point><coordinates>101.305,37.705,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>門源（午餐經停）</name>
+        <description>油菜花季已過 · 補給</description>
+        <Point><coordinates>101.6185,37.3766,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>記憶時光摩洛哥復古鏡民宿</name>
+        <description>城東中發源城市廣場 9 棟 26 樓 1267 · 1 晚</description>
+        <Point><coordinates>101.805,36.6215,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+
+    <Folder>
+      <name>Day 9 · 10/2</name>
+      <Placemark>
+        <name>塔爾寺</name>
+        <description>視航班決定是否前往</description>
+        <Point><coordinates>101.5694,36.4883,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
+        <name>蘭州中川國際機場 LHW</name>
+        <description>返程 · 9C7396 21:00</description>
+        <Point><coordinates>103.6208,36.5152,0</coordinates></Point>
+      </Placemark>
+    </Folder>
+  </Document>
+</kml>

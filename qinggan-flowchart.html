@@ -1,0 +1,496 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>青甘大環線 9 日行程流程圖</title>
+  <link href="https://fonts.googleapis.com/css2?family=ZCOOL+KuaiLe&family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet" />
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      background: linear-gradient(160deg, #f3e0c8 0%, #f7efe2 40%, #d7ebe8 100%);
+      display: flex;
+      justify-content: center;
+      padding: 20px 12px 40px;
+      font-family: "Noto Sans TC", sans-serif;
+      color: #4a3528;
+    }
+    .sheet {
+      width: min(1100px, 100%);
+      background: linear-gradient(180deg, #fffef8 0%, #fff6ea 100%);
+      border: 6px solid #c47a4a;
+      box-shadow: 0 0 0 3px #f6e4d0, 0 0 0 8px #e2b48a, 0 16px 48px rgba(120, 70, 30, 0.18);
+      padding: 24px 20px 28px;
+      position: relative;
+    }
+    .sheet::before {
+      content: "";
+      position: absolute;
+      inset: 10px;
+      border: 2px dashed rgba(196, 122, 74, 0.35);
+      pointer-events: none;
+    }
+    header { text-align: center; margin-bottom: 18px; position: relative; z-index: 1; }
+    h1 {
+      font-family: "ZCOOL KuaiLe", cursive;
+      font-size: clamp(1.5rem, 4vw, 2rem);
+      color: #8a3d1c;
+    }
+    .subtitle { margin-top: 6px; font-size: 0.85rem; color: #9a6b4a; }
+    .badge-row { display: flex; flex-wrap: wrap; justify-content: center; gap: 6px; margin-top: 10px; }
+    .badge {
+      font-size: 0.7rem;
+      padding: 3px 10px;
+      border-radius: 999px;
+      background: #f3e2d0;
+      border: 1px solid #e2b48a;
+      color: #8a3d1c;
+    }
+    .day-block { margin-bottom: 32px; position: relative; z-index: 1; }
+    .day-title {
+      display: inline-flex;
+      flex-wrap: wrap;
+      align-items: center;
+      gap: 6px;
+      background: linear-gradient(90deg, #c47a4a, #d4a017);
+      color: #fff;
+      font-weight: 700;
+      font-size: 0.9rem;
+      padding: 6px 14px;
+      border-radius: 999px;
+      margin-bottom: 12px;
+    }
+    .day-theme { font-weight: 400; font-size: 0.78rem; opacity: 0.95; }
+    .flow {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: stretch;
+      justify-content: flex-start;
+      gap: 0;
+      padding: 4px 0;
+    }
+    .node {
+      width: 168px;
+      flex-shrink: 0;
+      background: #fff;
+      border: 2px solid #ead2b8;
+      border-radius: 12px;
+      padding: 8px 8px 10px;
+      text-align: center;
+      box-shadow: 0 3px 10px rgba(120, 70, 30, 0.08);
+    }
+    .time-badge {
+      display: inline-block;
+      font-size: 0.65rem;
+      font-weight: 700;
+      color: #fff;
+      background: #1e88a8;
+      padding: 2px 8px;
+      border-radius: 6px;
+      margin-bottom: 6px;
+    }
+    .node-emoji {
+      font-size: 1.8rem;
+      line-height: 1;
+      margin: 4px 0 6px;
+    }
+    .place {
+      font-size: 0.78rem;
+      font-weight: 700;
+      color: #8a3d1c;
+      line-height: 1.3;
+    }
+    .do {
+      font-size: 0.68rem;
+      color: #5c4538;
+      margin-top: 4px;
+      line-height: 1.45;
+      text-align: left;
+      background: #faf4ec;
+      padding: 5px 6px;
+      border-radius: 6px;
+      border-left: 3px solid #d4a017;
+    }
+    .stay { font-size: 0.62rem; color: #9a7a68; margin-top: 4px; }
+    .map-link {
+      display: inline-block;
+      margin-top: 5px;
+      font-size: 0.6rem;
+      color: #1e88a8;
+      text-decoration: underline;
+    }
+    .leg {
+      width: 88px;
+      flex-shrink: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      padding: 0 2px;
+      min-height: 120px;
+    }
+    .leg-arrow { color: #c47a4a; font-size: 1.2rem; line-height: 1; }
+    .leg-box {
+      margin-top: 4px;
+      font-size: 0.58rem;
+      line-height: 1.4;
+      text-align: center;
+      background: #f6ece0;
+      border: 1px dashed #e2b48a;
+      border-radius: 8px;
+      padding: 5px 4px;
+      color: #8a3d1c;
+      width: 100%;
+    }
+    .leg-box strong {
+      display: block;
+      font-size: 0.62rem;
+      color: #c45c26;
+      margin-bottom: 2px;
+    }
+    .note-box {
+      margin-top: 16px;
+      padding: 12px 14px;
+      background: rgba(243, 226, 208, 0.7);
+      border-radius: 10px;
+      border: 1px solid #ead2b8;
+      font-size: 0.76rem;
+      line-height: 1.65;
+      position: relative;
+      z-index: 1;
+    }
+    .note-box strong { color: #8a3d1c; }
+    @media (max-width: 700px) {
+      .flow { flex-direction: column; align-items: center; }
+      .leg {
+        width: 152px;
+        min-height: auto;
+        flex-direction: row;
+        gap: 8px;
+        padding: 8px 0;
+      }
+      .leg-arrow { transform: rotate(90deg); }
+    }
+  </style>
+</head>
+<body>
+  <article class="sheet">
+    <header>
+      <h1>青甘大環線 · 9 日流程圖</h1>
+      <p class="subtitle">2026/9/24–10/2 · 5 人自駕 · 住宿：青海湖1 → 大柴旦2 → 敦煌2 → 張掖1 → 祁連1 → 西寧1</p>
+      <div class="badge-row">
+        <span class="badge">🚗 5人自駕 · 建議 7 座</span>
+        <span class="badge">9C7395／9C7396 春秋</span>
+        <span class="badge">莫高窟務必預約</span>
+        <span class="badge">10/1 國慶早出發</span>
+      </div>
+    </header>
+
+    <section class="day-block">
+      <div class="day-title">Day 1 · 9/24 四 <span class="day-theme">廣州早班 → 青海湖二郎劍</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">04:30–06:30</span>
+          <div class="node-emoji">✈️</div>
+          <div class="place">廣州白雲 CAN</div>
+          <div class="do"><strong>做什麼：</strong>春秋 9C7395 · 白雲 T3 · 06:30 飛蘭州</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=广州白云国际机场">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>✈️ 9C7395</strong>06:30–09:40</div></div>
+        <div class="node">
+          <span class="time-badge">09:40</span>
+          <div class="node-emoji">🚗</div>
+          <div class="place">蘭州中川機場 LHW</div>
+          <div class="do"><strong>做什麼：</strong>取行李、租 7 座</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=兰州中川国际机场">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 自駕</strong>約 3.5–4.5h<br/>280km 西行</div></div>
+        <div class="node">
+          <span class="time-badge">15:00–18:30</span>
+          <div class="node-emoji">🌊</div>
+          <div class="place">青海湖二郎劍</div>
+          <div class="do"><strong>做什麼：</strong>南岸觀湖、趕日落倒影 · 海拔約 3,200m 慢走</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=青海湖二郎剑景区">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 10–15 分</strong>江西溝下社村</div></div>
+        <div class="node">
+          <span class="time-badge">19:30+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">卡巴倉·措瓊諾日 1 晚</div>
+          <div class="do"><strong>做什麼：</strong>野奢民宿 · 製氧機／地暖 · 夜間很冷備羽絨</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=青海湖卡巴仓+措琼诺日+江西沟乡下社村">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 2 · 9/25 五 <span class="day-theme">茶卡鹽湖 → 德令哈 → 大柴旦</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">08:00</span>
+          <div class="node-emoji">🌅</div>
+          <div class="place">卡巴倉退房出發</div>
+          <div class="do"><strong>做什麼：</strong>退房西行茶卡 · 可補拍清晨湖面</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 2h</strong>150km</div></div>
+        <div class="node">
+          <span class="time-badge">10:00–12:00</span>
+          <div class="node-emoji">🪞</div>
+          <div class="place">茶卡鹽湖</div>
+          <div class="do"><strong>做什麼：</strong>天空之鏡 · 鞋套／白鞋 · 晴天才出片</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=茶卡盐湖">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 2.5h</strong>200km</div></div>
+        <div class="node">
+          <span class="time-badge">14:30–15:30</span>
+          <div class="node-emoji">🍽️</div>
+          <div class="place">德令哈經停</div>
+          <div class="do"><strong>做什麼：</strong>午餐、加油、洗手間</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 2h</strong>170km</div></div>
+        <div class="node">
+          <span class="time-badge">18:00+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">麗呈翠星 · 連住 2 晚</div>
+          <div class="do"><strong>做什麼：</strong>義海街 9 號 · 製氧機／加濕器</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=大柴旦丽呈翠星酒店+义海街9号">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 3 · 9/26 六 <span class="day-theme">察爾汗 · 315U · 水上雅丹（超長趕路）</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">07:00</span>
+          <div class="node-emoji">⛽</div>
+          <div class="place">麗呈翠星出發</div>
+          <div class="do"><strong>做什麼：</strong>滿油、備水零食 · 南下再西出</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 1.5–2h</strong>南下格爾木向</div></div>
+        <div class="node">
+          <span class="time-badge">09:00–10:15</span>
+          <div class="node-emoji">🧂</div>
+          <div class="place">察爾汗鹽湖</div>
+          <div class="do"><strong>做什麼：</strong>鹽橋公路 · 勿長停未指定路段</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=察尔汗盐湖">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 經大柴旦</strong>再西行 G315</div></div>
+        <div class="node">
+          <span class="time-badge">13:00–13:40</span>
+          <div class="node-emoji">🛣️</div>
+          <div class="place">315 U 型公路</div>
+          <div class="do"><strong>做什麼：</strong>天空之鏡彎道 · 指定觀景點停車</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=315国道U型公路">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 1.5–2h</strong>沿 G315 西行</div></div>
+        <div class="node">
+          <span class="time-badge">15:30–17:00</span>
+          <div class="node-emoji">🪨</div>
+          <div class="place">水上雅丹</div>
+          <div class="do"><strong>做什麼：</strong>雅丹倒映 · 景區無餐</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=乌素特水上雅丹">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 3–3.5h</strong>東返入住</div></div>
+        <div class="node">
+          <span class="time-badge">20:30+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">返回麗呈翠星</div>
+          <div class="do"><strong>做什麼：</strong>同一酒店 · 注意夜駕疲勞</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 4 · 9/27 日 <span class="day-theme">翡翠湖 · 黑獨山 → 敦煌</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">08:00–10:00</span>
+          <div class="node-emoji">💎</div>
+          <div class="place">大柴旦翡翠湖</div>
+          <div class="do"><strong>做什麼：</strong>蒂芙尼藍鹽池 · 穿鞋套</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=大柴旦翡翠湖">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 1.5h</strong>西北行</div></div>
+        <div class="node">
+          <span class="time-badge">11:30–12:30</span>
+          <div class="node-emoji">🌑</div>
+          <div class="place">黑獨山</div>
+          <div class="do"><strong>做什麼：</strong>黑山＋胭脂山對比 · 風大訊號弱</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=黑独山">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 4–5h</strong>入甘肅</div></div>
+        <div class="node">
+          <span class="time-badge">17:30+</span>
+          <div class="node-emoji">🌙</div>
+          <div class="place">煌漠玥 Moon Field · 連住 2 晚</div>
+          <div class="do"><strong>做什麼：</strong>月牙泉鎮楊家橋 · 晚餐就近 · 鳴沙山在旁邊</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=煌漠玥民宿+月牙泉镇鸣山路杨家桥三组58号">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 5 · 9/28 一 <span class="day-theme">莫高窟 + 鳴沙山月牙泉</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">08:00–12:00</span>
+          <div class="node-emoji">🕌</div>
+          <div class="place">莫高窟</div>
+          <div class="do"><strong>做什麼：</strong>A 類票（實體窟+數字中心）· 現場幾乎無票</div>
+          <a class="map-link" href="https://ticket.dunhuang.org.cn/">🎫 預約</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 回城方向</strong>午餐黃麵</div></div>
+        <div class="node">
+          <span class="time-badge">12:30–14:00</span>
+          <div class="node-emoji">🍜</div>
+          <div class="place">敦煌午餐</div>
+          <div class="do"><strong>做什麼：</strong>驢肉黃麵／掛麵 · 店名待補</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚶／🚗</strong>回月牙泉鎮民宿旁</div></div>
+        <div class="node">
+          <span class="time-badge">15:30–18:30</span>
+          <div class="node-emoji">🏜️</div>
+          <div class="place">鳴沙山月牙泉</div>
+          <div class="do"><strong>做什麼：</strong>民宿就在月牙泉鎮 · 傍晚步行／短駛 · 可騎駱駝 · 看日落</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=鸣沙山月牙泉">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 6 · 9/29 二 <span class="day-theme">嘉峪關 → 張掖七彩丹霞</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">08:00</span>
+          <div class="node-emoji">🧳</div>
+          <div class="place">煌漠玥退房出發</div>
+          <div class="do"><strong>做什麼：</strong>月牙泉鎮退房東行河西走廊</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 4h</strong>380km</div></div>
+        <div class="node">
+          <span class="time-badge">12:00–14:00</span>
+          <div class="node-emoji">🏯</div>
+          <div class="place">嘉峪關關城</div>
+          <div class="do"><strong>做什麼：</strong>長城西端 · 中午日照強</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=嘉峪关关城">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 2.5–3h</strong>臨澤</div></div>
+        <div class="node">
+          <span class="time-badge">16:30–18:30</span>
+          <div class="node-emoji">🌈</div>
+          <div class="place">七彩丹霞</div>
+          <div class="do"><strong>做什麼：</strong>日落層次最飽 · 景區車轉觀景台</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=张掖七彩丹霞">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 約 40 分</strong>西站／新墩</div></div>
+        <div class="node">
+          <span class="time-badge">19:30+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">望山國際（張掖西站）1 晚</div>
+          <div class="do"><strong>做什麼：</strong>雙塔民俗文化村 · 晚餐酒店／新墩周邊</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=望山国际大酒店+张掖西站+双塔民俗文化村">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 7 · 9/30 三 <span class="day-theme">祁連山草原 → 祁連縣</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">09:00</span>
+          <div class="node-emoji">🚗</div>
+          <div class="place">望山退房出發</div>
+          <div class="do"><strong>做什麼：</strong>民樂、扁都口翻山入青</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 2.5–3h</strong>扁都口</div></div>
+        <div class="node">
+          <span class="time-badge">12:30–16:00</span>
+          <div class="node-emoji">🌾</div>
+          <div class="place">祁連山草原／卓爾山</div>
+          <div class="do"><strong>做什麼：</strong>草色轉金 · 風大備衝鋒衣</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=祁连卓尔山">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 縣城</strong>短途</div></div>
+        <div class="node">
+          <span class="time-badge">17:00+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">祁連五礦國貿 1 晚</div>
+          <div class="do"><strong>做什麼：</strong>八寶鎮濱河路 · 夜間可接近 0°C · 確認暖氣</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=祁连五矿国贸饭店+八宝镇滨河路">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 8 · 10/1 四 <span class="day-theme">崗什卡 → 門源 → 西寧（國慶）</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">08:30</span>
+          <div class="node-emoji">🚩</div>
+          <div class="place">五礦國貿退房出發</div>
+          <div class="do"><strong>做什麼：</strong>國慶首日早走避堵</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 1–1.5h</strong></div></div>
+        <div class="node">
+          <span class="time-badge">10:00–11:30</span>
+          <div class="node-emoji">🏔️</div>
+          <div class="place">崗什卡雪峰</div>
+          <div class="do"><strong>做什麼：</strong>遠眺主峰 · 觀景台風大紫外線強</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=岗什卡雪峰观景台">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 1–1.5h</strong></div></div>
+        <div class="node">
+          <span class="time-badge">13:00–14:00</span>
+          <div class="node-emoji">🍲</div>
+          <div class="place">門源午餐</div>
+          <div class="do"><strong>做什麼：</strong>油菜花季已過 · 縣城補給</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 2–2.5h</strong></div></div>
+        <div class="node">
+          <span class="time-badge">17:00+</span>
+          <div class="node-emoji">🛏️</div>
+          <div class="place">記憶時光摩洛哥復古鏡 1 晚</div>
+          <div class="do"><strong>做什麼：</strong>城東中發源廣場 9 棟 · 近東關釀皮／甜醅</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=中发源城市广场+西宁城东">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="day-block">
+      <div class="day-title">Day 9 · 10/2 五 <span class="day-theme">塔爾寺 → 9C7396 飛廣州</span></div>
+      <div class="flow">
+        <div class="node">
+          <span class="time-badge">09:00–12:00</span>
+          <div class="node-emoji">🛕</div>
+          <div class="place">塔爾寺</div>
+          <div class="do"><strong>做什麼：</strong>晚班機，上午從容參觀</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=塔尔寺">📍 地圖</a>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 回城</strong>午餐</div></div>
+        <div class="node">
+          <span class="time-badge">12:30–14:00</span>
+          <div class="node-emoji">🥗</div>
+          <div class="place">西寧午餐</div>
+          <div class="do"><strong>做什麼：</strong>釀皮／酸奶 · 不必趕</div>
+        </div>
+        <div class="leg"><span class="leg-arrow">→</span><div class="leg-box"><strong>🚗 16:00 出發</strong>約 2–2.5h</div></div>
+        <div class="node">
+          <span class="time-badge">18:30–21:00</span>
+          <div class="node-emoji">✈️</div>
+          <div class="place">蘭州中川 LHW</div>
+          <div class="do"><strong>做什麼：</strong>還車 · 中川 T3 · 9C7396 21:00→00:15+1</div>
+          <a class="map-link" href="https://www.google.com/maps/search/?api=1&query=兰州中川国际机场">📍 地圖</a>
+        </div>
+      </div>
+    </section>
+
+    <div class="note-box">
+      <strong>備註：</strong>時間為計劃樂觀值，Day 3 為超長趕路日，可按當天體能砍察爾汗或縮短雅丹停留。
+      莫高窟請在敦煌研究院提前預約。10/1 國慶門源／西寧易堵。
+      航班、酒店、租車確認號補上後會同步到「航班／預訂」頁。建議兩名司機輪換，Day 3 勿疲勞夜駕。
+    </div>
+  </article>
+</body>
+</html>

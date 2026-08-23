@@ -1,0 +1,58 @@
+window.PACKING_DATA = {
+  categories: [
+    {
+      id: "clothes",
+      title: { zh: "衣服", en: "Clothes" },
+      items: [
+        { id: "c1", label: { zh: "內層快乾衣／褲子（趕路日換洗）", en: "Base layers / pants (long driving days)" } },
+        { id: "c2", label: { zh: "內衣／襪子（含厚襪）", en: "Underwear / socks (incl. thick socks)" } },
+        { id: "c3", label: { zh: "睡衣", en: "Pajamas" } },
+        { id: "c4", label: { zh: "衝鋒衣／防風外套", en: "Shell / windbreaker" } },
+        { id: "c5", label: { zh: "薄羽絨或保暖棉服（湖邊／祁連夜間）", en: "Light down (lakeside / Qilian nights)" } },
+        { id: "c6", label: { zh: "長袖防曬衣 + 鮮色圍巾（鹽湖拍照／擋風）", en: "Sun shirt + bright scarf (salt-lake photos / wind)" } },
+        { id: "c7", label: { zh: "運動鞋（丹霞／草原）+ 可進鹽湖的舊鞋或鞋套", en: "Sneakers + old shoes or covers for salt lakes" } },
+      ],
+    },
+    {
+      id: "electronics",
+      title: { zh: "電子產品", en: "Electronics" },
+      items: [
+        { id: "e1", label: { zh: "充電器與充電線", en: "Charger & cables" } },
+        { id: "e2", label: { zh: "充電寶（無人區訊號差、導航耗電）", en: "Power bank (weak signal, GPS drain)" } },
+        { id: "e3", label: { zh: "中國大陸 Type A／I 轉換插頭（香港 Type G）", en: "China Type A/I adapter (from HK Type G)" } },
+        { id: "e4", label: { zh: "大陸電話卡／eSIM + 離線地圖下載", en: "Mainland SIM / eSIM + offline maps" } },
+        { id: "e4b", label: { zh: "春秋 App 值機／電子登機牌截圖", en: "Spring Airlines app check-in / boarding-pass screenshots" } },
+        { id: "e5", label: { zh: "相機／手機防沙袋（鳴沙山）", en: "Camera/phone dust bag (Mingsha Shan)" } },
+        { id: "e6", label: { zh: "車用充電線／點煙器充電", en: "Car charger / cigarette-socket charge" } },
+      ],
+    },
+    {
+      id: "money",
+      title: { zh: "證件與錢", en: "IDs & money" },
+      items: [
+        { id: "m1", label: { zh: "護照 + 回鄉證 + 身份證", en: "Passport + Home Return Permit + ID" } },
+        { id: "m2", label: { zh: "信用卡／借記卡 ×2（已開銀聯／境外交易）", en: "Cards ×2 (UnionPay / overseas enabled)" } },
+        { id: "m3", label: { zh: "少量現金人民幣（無人區／小館可能只收現金）", en: "Some CNY cash (remote spots may be cash-only)" } },
+        { id: "m4", label: { zh: "微信支付／支付寶（香港卡提前綁好）", en: "WeChat Pay / Alipay (link cards before leaving)" } },
+        { id: "m5", label: { zh: "機票·酒店·莫高窟預約截圖（離線保存）", en: "Offline screenshots of flights / hotels / Mogao booking" } },
+        { id: "m6", label: { zh: "內地駕照（建議兩名司機）／香港駕照公證件", en: "Mainland license (two drivers if possible) / HK license notarization" } },
+        { id: "m7", label: { zh: "租車訂單＋全險憑證截圖", en: "Rental booking + full-insurance screenshots" } },
+      ],
+    },
+    {
+      id: "other",
+      title: { zh: "高原與日用品", en: "Highland & toiletries" },
+      items: [
+        { id: "o1", label: { zh: "高反藥／紅景天（遵醫囑）+ 常用藥", en: "Altitude meds / rhodiola (as advised) + regular meds" } },
+        { id: "o2", label: { zh: "SPF50 防曬 + 唇膏 + 保濕霜（極乾）", en: "SPF50 + lip balm + moisturizer (very dry)" } },
+        { id: "o3", label: { zh: "墨鏡 + 寬簷帽", en: "Sunglasses + wide-brim hat" } },
+        { id: "o4", label: { zh: "水壺 + 電解質飲料粉", en: "Water bottle + electrolyte powder" } },
+        { id: "o5", label: { zh: "潤喉／鼻噴（鹽湖風沙）", en: "Lozenges / saline spray (salt-lake wind)" } },
+        { id: "o6", label: { zh: "洗臉用品／毛巾", en: "Face wash / towel" } },
+        { id: "o7", label: { zh: "車用垃圾袋（雅丹／鹽湖請把垃圾帶走）", en: "Car trash bags (pack out all rubbish)" } },
+        { id: "o8", label: { zh: "少量乾糧／朱古力（Day 3 長途）", en: "Snacks / chocolate (long Day 3)" } },
+        { id: "o9", label: { zh: "離線高德／百度地圖 + 紙質備援（無人區）", en: "Offline Amap/Baidu + paper backup (no signal)" } },
+      ],
+    },
+  ],
+};

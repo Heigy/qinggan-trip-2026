@@ -1,0 +1,52 @@
+name: Deploy GitHub Pages
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: pages
+  cancel-in-progress: true
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Inject My Maps URLs (optional secrets)
+        env:
+          QINGGAN_EMBED: ${{ secrets.MYMAPS_QINGGAN_EMBED }}
+          QINGGAN_VIEW: ${{ secrets.MYMAPS_QINGGAN_VIEW }}
+        run: |
+          if [ -n "$QINGGAN_EMBED" ]; then
+            cat > config.js << EOF
+          window.MYMAPS_CONFIG = {
+            qinggan: {
+              embedUrl: "$QINGGAN_EMBED",
+              viewUrl: "${QINGGAN_VIEW:-$QINGGAN_EMBED}",
+            },
+          };
+          EOF
+            echo "config.js generated from GitHub Secrets."
+          else
+            echo "Using committed config.js (set MYMAPS_QINGGAN_EMBED to override)."
+          fi
+
+      - uses: actions/configure-pages@v5
+
+      - uses: actions/upload-pages-artifact@v3
+        with:
+          path: .
+
+      - id: deployment
+        uses: actions/deploy-pages@v4

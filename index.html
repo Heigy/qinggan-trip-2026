@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>青甘大環線 2026 · 互動行程地圖</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet" />
+  <link rel="stylesheet" href="styles.css?v=6" />
+  <script>
+    (function () {
+      try {
+        var saved = localStorage.getItem("trip-theme");
+        var dark = saved === "dark" || (!saved && window.matchMedia("(prefers-color-scheme: dark)").matches);
+        if (dark) document.documentElement.setAttribute("data-theme", "dark");
+      } catch (_) {}
+    })();
+  </script>
+  <script src="config.js?v=6"></script>
+  <script src="trip-data.js?v=6"></script>
+  <script src="flight-data.js?v=6"></script>
+  <script src="booking-data.js?v=6"></script>
+  <script src="food-data.js?v=6"></script>
+  <script src="packing-data.js?v=6"></script>
+  <script src="cost-data.js?v=6"></script>
+  <script src="weather-data.js?v=6"></script>
+  <script src="i18n.js?v=6"></script>
+</head>
+<body>
+  <div id="app">
+    <header>
+      <div>
+        <h1 id="page-title">青甘大環線 9日8夜</h1>
+        <p class="subtitle" id="page-subtitle">2026年9月24日–10月2日 · 5人 · 自駕</p>
+      </div>
+      <div class="header-actions">
+        <button type="button" id="theme-toggle" class="theme-toggle" aria-label="切換深色模式">
+          <svg class="icon-moon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+        </button>
+        <div class="lang-tabs" role="group" aria-label="Language">
+          <button type="button" data-lang="zh" class="active">中文</button>
+          <button type="button" data-lang="en">English</button>
+        </div>
+      </div>
+    </header>
+
+    <div class="flights-bar" id="flights-bar"></div>
+
+    <div class="main">
+      <div class="map-wrap">
+        <div class="map-toolbar">
+          <div class="view-tabs" role="group" id="view-tabs">
+            <button type="button" data-view="map" class="active">互動地圖</button>
+            <button type="button" data-view="flowchart">路線圖</button>
+            <button type="button" data-view="flights">航班</button>
+            <button type="button" data-view="bookings">預訂</button>
+            <button type="button" data-view="cost">費用</button>
+            <button type="button" data-view="food">美食</button>
+            <button type="button" data-view="pack">行李</button>
+          </div>
+          <span class="map-toolbar-label" id="map-mode-label">My Maps 總覽</span>
+          <div class="map-toolbar-actions">
+            <button type="button" id="map-restore" class="map-btn" hidden>↩ 返回 My Maps</button>
+            <a id="map-open-external" class="map-btn map-btn-link" href="#" target="_blank" rel="noopener">↗ 全屏 My Maps</a>
+          </div>
+        </div>
+        <div id="map-panel" class="content-panel active">
+          <iframe
+            id="map-frame"
+            title="行程地圖"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            allowfullscreen
+          ></iframe>
+          <div id="map-focus-badge" class="map-focus-badge" hidden>
+            <div class="map-focus-pin" aria-hidden="true"></div>
+            <div class="map-focus-text">
+              <strong id="map-focus-name"></strong>
+              <span id="map-focus-meta"></span>
+            </div>
+            <a id="map-focus-open" class="map-focus-link" href="#" target="_blank" rel="noopener"></a>
+          </div>
+          <div id="map-setup" class="map-setup">
+            <h3>嵌入 Google My Maps</h3>
+            <p class="setup-intro">網站使用 <strong>Google My Maps</strong>（免費，無需 API Key）。請先建立地圖並把連結填入 <code>config.js</code>。</p>
+            <p class="setup-kml">匯入檔案：<code>qinggan-locations.kml</code></p>
+            <ol>
+              <li>打開 <a href="https://www.google.com/maps/d/" target="_blank" rel="noopener">Google My Maps</a></li>
+              <li>建立新地圖 → <strong>匯入</strong> → 上傳對應的 KML</li>
+              <li>分享 → 「知道連結的任何人可查看」</li>
+              <li>點 <strong>⋮</strong> → 「在地圖上嵌入」→ 複製 <code>src="..."</code> 裡的網址</li>
+              <li>貼到 <code>config.js</code> 的 <code>embedUrl</code> / <code>viewUrl</code></li>
+              <li><code>git push</code> 重新部署</li>
+            </ol>
+            <p class="map-setup-note setup-note">完成後刷新此頁，左側會顯示 My Maps，右側為行程列表。</p>
+          </div>
+        </div>
+        <div id="flowchart-panel" class="content-panel">
+          <iframe
+            id="flowchart-frame"
+            title="旅遊路線圖"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+          ></iframe>
+        </div>
+        <div id="flights-panel" class="content-panel">
+          <div class="flights-scroll" id="flights-content"></div>
+        </div>
+        <div id="bookings-panel" class="content-panel">
+          <div class="flights-scroll" id="bookings-content"></div>
+        </div>
+        <div id="cost-panel" class="content-panel">
+          <div class="flights-scroll" id="cost-content"></div>
+        </div>
+        <div id="food-panel" class="content-panel">
+          <div class="flights-scroll" id="food-content"></div>
+        </div>
+        <div id="pack-panel" class="content-panel">
+          <div class="flights-scroll" id="pack-content"></div>
+        </div>
+      </div>
+
+      <aside class="sidebar">
+        <div class="sidebar-head">
+          <h2 id="sidebar-title">青甘 · Day 1</h2>
+          <p class="theme" id="sidebar-theme"></p>
+          <p class="weather-line" id="sidebar-weather" hidden></p>
+          <p class="weather-tip" id="sidebar-weather-tip" hidden></p>
+          <p class="day-hint" id="day-hint"></p>
+          <div id="region-inspiration-wrap" class="region-inspiration-wrap">
+            <button type="button" id="region-inspiration" class="region-inspiration-btn" data-open="https://ticket.dunhuang.org.cn/">莫高窟預約（敦煌研究院）</button>
+            <button type="button" id="region-inspiration-alt" class="region-inspiration-btn muted" data-open="https://www.qhly.gov.cn/">青海文旅</button>
+            <button type="button" id="region-inspiration-city" class="region-inspiration-btn muted" data-open="https://www.mogaoku.net/">敦煌莫高窟</button>
+          </div>
+        </div>
+        <div class="day-tabs" id="day-tabs"></div>
+        <div class="plan-tabs" id="plan-tabs" hidden></div>
+        <div class="legend" id="legend"></div>
+        <div class="stats">
+          <span id="stat-stops">0 個站點</span>
+          <span id="stat-region"></span>
+          <a id="day-directions" href="#" target="_blank" rel="noopener">整日路線</a>
+        </div>
+        <div class="itinerary" id="itinerary"></div>
+      </aside>
+    </div>
+  </div>
+
+  <script src="app.js?v=6"></script>
+</body>
+</html>
