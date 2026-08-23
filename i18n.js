@@ -116,8 +116,8 @@ window.I18N = {
     todayOffTrip: { zh: "今天不在行程日", en: "Today is outside the trip" },
     flightsOverview: { zh: "機票與座位", en: "Tickets & seats" },
     flightsHint: {
-      zh: "春秋 9C7395／9C7396 · 廣州白雲 T3 ↔ 蘭州中川 T3 · PNR／座位待補",
-      en: "Spring 9C7395 / 9C7396 · Baiyun T3 ↔ Zhongchuan T3 · PNR / seats TBD",
+      zh: "春秋 9C7395／9C7396 · 趙晨 9/24 西寧機場接機 · 航班號待補",
+      en: "Spring 9C7395 / 9C7396 · pick up Zhao Chen at XNN on Sep 24 · flight TBD",
     },
     flightPnr: { zh: "訂位編號", en: "PNR / Booking" },
     flightSeats: { zh: "座位", en: "Seats" },
@@ -150,7 +150,7 @@ window.I18N = {
     qinggan: { en: { name: "Qinghai–Gansu Loop" } },
   },
   days: {
-    "qinggan-d1": { en: { theme: "Early CAN flight → pick up car in Lanzhou → Qinghai Lake Erlangjian" } },
+    "qinggan-d1": { en: { theme: "Early CAN flight → Lanzhou car → pick up Zhao Chen at Xining Airport → Qinghai Lake" } },
     "qinggan-d2": { en: { theme: "Qinghai Lake → Chaka Salt Lake → Delingha stop → Da Qaidam" } },
     "qinggan-d3": { en: { theme: "Qarhan Salt Lake · G315 U-bend · Water Yadan · back to Da Qaidam" } },
     "qinggan-d4": { en: { theme: "Emerald Lakes · Heidushan → Dunhuang" } },
@@ -162,9 +162,10 @@ window.I18N = {
   },
   stops: {
     "q1-0": { en: { name: "Guangzhou Baiyun Airport CAN", desc: "Spring 9C7395 · Baiyun T3 · LCC: be there ~2h early", transport: "✈️ 9C7395 06:30" } },
-    "q1-1": { en: { name: "Lanzhou Zhongchuan Airport LHW", desc: "9C7395 arrives Zhongchuan T3 · bags then pick up 7-seater", transport: "✈️ 9C7395" } },
-    "q1-2": { en: { name: "Qinghai Lake Erlangjian", desc: "Classic south-shore viewpoint · catch sunset reflections · ~3,200m, walk slowly", transport: "🚗 Self-drive ~3.5–4.5h / 280km" } },
-    "q1-3": { en: { name: "Kabacang Cuoqiong Nuori Homestay", desc: "Jiangxigou Xiashe Village · ~10–15 min from Erlangjian · oxygen / heating · see Bookings", transport: "🚗 Near the scenic area" } },
+    "q1-1": { en: { name: "Lanzhou Zhongchuan Airport LHW", desc: "9C7395 arrives Zhongchuan T3 · bags then 7-seater · west on G6 to pick up Zhao Chen (Zhongchuan is already toward Xining)", transport: "✈️ 9C7395" } },
+    "q1-2": { en: { name: "Xining Caojiabao Airport · pick up Zhao Chen", desc: "Zhao Chen’s flight TBD · ~1.5–2h / 170km from Zhongchuan · then on to the Qinghai Lake stay", transport: "🚗 ~1.5–2h / 170km" } },
+    "q1-3": { en: { name: "Qinghai Lake Erlangjian", desc: "South-shore viewpoint next to the stay · sunset only if pickup is early · ~3,200m, walk slowly", transport: "🚗 ~2–2.5h / 160km from XNN" } },
+    "q1-4": { en: { name: "Kabacang Cuoqiong Nuori Homestay", desc: "Jiangxigou Xiashe Village · ~10–15 min from Erlangjian · oxygen / heating · see Bookings", transport: "🚗 After pickup" } },
     "q2-1": { en: { name: "Check out Kabacang", desc: "Head west to Chaka · optional dawn lake shot", transport: "—" } },
     "q2-2": { en: { name: "Chaka Salt Lake", desc: "Sky-mirror · best in sun · shoe covers / white shoes · optional mini-train · windy afternoons in Sep", transport: "🚗 ~2h / 150km" } },
     "q2-3": { en: { name: "Delingha (lunch stop)", desc: "Fuel, toilets, lunch before the emptier Qaidam stretch", transport: "🚗 ~2.5h / 200km" } },

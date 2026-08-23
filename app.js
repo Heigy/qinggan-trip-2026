@@ -224,7 +224,7 @@ function hasDedicatedMyMap(regionId) {
 }
 
 function flowchartPage() {
-  return "qinggan-flowchart.html?v=8";
+  return "qinggan-flowchart.html?v=9";
 }
 
 function isMapView() {

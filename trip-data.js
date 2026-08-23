@@ -22,12 +22,13 @@ window.TRIP_DATA = {
         {
           id: "qinggan-d1",
           label: "Day 1 · 9/24",
-          theme: "廣州早班 → 蘭州取車 → 青海湖二郎劍",
+          theme: "廣州早班 → 蘭州取車 → 西寧機場接趙晨 → 青海湖",
           stops: [
             { id: "q1-0", name: "廣州白雲國際機場 CAN", nameKo: "Guangzhou Baiyun", time: "04:30–06:30", desc: "春秋 9C7395 · 白雲 T3 · 廉航建議起飛前 2h 到場", transport: "✈️ 9C7395 06:30", lat: 23.3924, lng: 113.2988, skipMarker: true, mapsUrl: "https://www.google.com/maps/search/?api=1&query=广州白云国际机场" },
-            { id: "q1-1", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "09:40", desc: "9C7395 抵達中川 T3 · 取行李、租 7 座", transport: "✈️ 9C7395", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场", address: { zh: "甘肅蘭州市永登縣中川國際機場", en: "Lanzhou Zhongchuan International Airport (LHW)" } },
-            { id: "q1-2", name: "青海湖二郎劍景區", nameKo: "Erlangjian, Qinghai Lake", time: "15:00–18:30", desc: "環線第一站 · 南岸最經典觀湖點 · 趕日落倒影 · 海拔約 3,200m，下車慢走", transport: "🚗 自駕約 3.5–4.5h / 280km", lat: 36.578633, lng: 100.495767, mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖二郎剑景区", address: { zh: "青海海南州共和縣江西溝鄉青海湖二郎劍景區", en: "Erlangjian Scenic Area, Jiangxigou, Gonghe, Qinghai Lake" } },
-            { id: "q1-3", name: "卡巴倉·措瓊諾日野奢民宿", nameKo: "Kabacang", time: "19:30+", desc: "江西溝鄉下社村 · 二郎劍約 10–15 分 · 製氧機／地暖 · 確認號見「預訂」", transport: "🚗 景區周邊", lat: 36.5835, lng: 100.468, bookingId: "hotel-qinghai", mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖卡巴仓+措琼诺日+江西沟乡下社村" },
+            { id: "q1-1", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "09:40", desc: "9C7395 抵達中川 T3 · 取行李、租 7 座後沿 G6 西行接趙晨（中川本就在西寧方向，順路）", transport: "✈️ 9C7395", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场", address: { zh: "甘肅蘭州市永登縣中川國際機場", en: "Lanzhou Zhongchuan International Airport (LHW)" } },
+            { id: "q1-2", name: "西寧曹家堡機場接趙晨", nameKo: "Xining Airport pickup", time: "12:30+", desc: "趙晨航班待補 · 中川開車約 1.5–2h／170km · 接到人再去青海湖民宿", transport: "🚗 約 1.5–2h / 170km", lat: 36.5275, lng: 102.043, mapsUrl: "https://www.google.com/maps/search/?api=1&query=西宁曹家堡机场", address: { zh: "青海西寧曹家堡國際機場 XNN", en: "Xining Caojiabao International Airport (XNN)" } },
+            { id: "q1-3", name: "青海湖二郎劍景區", nameKo: "Erlangjian, Qinghai Lake", time: "視接機", desc: "民宿旁南岸觀湖 · 接機早可趕日落倒影 · 晚則直奔酒店 · 海拔約 3,200m 慢走", transport: "🚗 西寧機場約 2–2.5h / 160km", lat: 36.578633, lng: 100.495767, mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖二郎剑景区", address: { zh: "青海海南州共和縣江西溝鄉青海湖二郎劍景區", en: "Erlangjian Scenic Area, Jiangxigou, Gonghe, Qinghai Lake" }, optional: true },
+            { id: "q1-4", name: "卡巴倉·措瓊諾日野奢民宿", nameKo: "Kabacang", time: "接機後約 2–2.5h", desc: "江西溝鄉下社村 · 二郎劍約 10–15 分 · 製氧機／地暖 · 確認號見「預訂」", transport: "🚗 接趙晨後前往", lat: 36.5835, lng: 100.468, bookingId: "hotel-qinghai", mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖卡巴仓+措琼诺日+江西沟乡下社村" },
           ],
         },
         {

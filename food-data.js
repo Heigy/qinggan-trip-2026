@@ -12,7 +12,7 @@ window.FOOD_DATA = {
       category: { zh: "麵", en: "Noodles" },
       area: { zh: "蘭州", en: "Lanzhou" },
       address: "兰州中川国际机场 / 兰州市区",
-      note: { zh: "Day 1 早班可在白雲吃一碗；返程 21:00 起飛，機場也可再吃", en: "Day 1 early flight: a bowl at Baiyun; also works at LHW before the 21:00 return" },
+      note: { zh: "Day 1 早班可在白雲吃一碗；中川取車後趕西寧接機，午餐可在曹家堡解決", en: "Day 1 early flight: a bowl at Baiyun; after LHW pickup, lunch can be at Xining Airport while waiting" },
       maps: "兰州牛肉面",
       dayHint: { zh: "適合 Day 1 落地或 Day 9 機場", en: "Fits Day 1 landing or Day 9 airport" },
     },

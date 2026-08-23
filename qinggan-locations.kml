@@ -8,12 +8,17 @@
       <name>Day 1 · 9/24</name>
       <Placemark>
         <name>蘭州中川國際機場 LHW</name>
-        <description>抵達 · 9C7395 09:40</description>
+        <description>抵達 · 9C7395 09:40 · 取車後去西寧接趙晨</description>
         <Point><coordinates>103.6208,36.5152,0</coordinates></Point>
       </Placemark>
       <Placemark>
+        <name>西寧曹家堡機場 XNN</name>
+        <description>接趙晨 · 航班待補</description>
+        <Point><coordinates>102.043,36.5275,0</coordinates></Point>
+      </Placemark>
+      <Placemark>
         <name>青海湖二郎劍景區</name>
-        <description>南岸觀湖 · 趕日落</description>
+        <description>南岸觀湖 · 接機早則趕日落</description>
         <Point><coordinates>100.495767,36.578633,0</coordinates></Point>
       </Placemark>
       <Placemark>

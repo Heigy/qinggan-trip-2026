@@ -18,7 +18,7 @@ window.WEATHER_DATA = {
   days: {
     "qinggan-d1": {
       summary: { zh: "涼 · 湖區約 8–16°C · 風大", en: "Cool · lake ~8–16°C · windy" },
-      tip: { zh: "9C7395 06:30 · 白雲 T3 建議 04:30 到 · 09:40 落地取車再上高原", en: "9C7395 06:30 · Baiyun T3 by 04:30 · land 09:40 then pick up the car" },
+      tip: { zh: "09:40 中川取車後去西寧機場接趙晨 · 再上青海湖 · 航班早才趕得上二郎劍日落", en: "Land 09:40, pick up car, then Xining Airport for Zhao Chen · then Qinghai Lake · Erlangjian sunset only if his flight is early" },
     },
     "qinggan-d2": {
       summary: { zh: "乾爽 · 茶卡約 6–18°C · 午後風", en: "Dry · Chaka ~6–18°C · afternoon wind" },
