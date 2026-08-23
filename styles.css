@@ -1475,22 +1475,42 @@ button.flight-pnr.is-masked {
   letter-spacing: 0.01em;
 }
 
+.stop-address {
+  font-size: 0.68rem;
+  color: var(--text);
+  margin-top: 6px;
+  line-height: 1.45;
+}
+
 .stop-actions {
   margin-top: 8px;
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
+  align-items: center;
 }
 
-.stop-actions a {
+.stop-actions a,
+.stop-actions .stop-copy-addr {
   font-size: 0.68rem;
   font-weight: 600;
   letter-spacing: 0.02em;
   color: var(--accent);
   text-decoration: none;
+  border: none;
+  background: none;
+  padding: 0;
+  border-radius: 0;
+  font-family: inherit;
+  cursor: pointer;
 }
 
-.stop-actions a:hover { text-decoration: underline; }
+.stop-actions a:hover,
+.stop-actions .stop-copy-addr:hover { text-decoration: underline; }
+
+.stop-actions .stop-copy-addr.copied {
+  color: var(--accent);
+}
 
 /* ── Map setup panel ── */
 .map-setup {

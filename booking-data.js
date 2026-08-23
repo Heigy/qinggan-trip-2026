@@ -209,3 +209,8 @@ window.BOOKING_DATA = {
     },
   ],
 };
+
+window.bookingForStop = function (stopId) {
+  return (window.BOOKING_DATA?.bookings || []).find((b) => (b.stopIds || []).includes(stopId));
+};
+

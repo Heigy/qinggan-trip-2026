@@ -7,6 +7,7 @@ window.I18N = {
     mapLocate: { zh: "地圖定位", en: "Show on map" },
     googleMaps: { zh: "Google Maps", en: "Google Maps" },
     navigate: { zh: "導航", en: "Directions" },
+    copyAddress: { zh: "複製地址", en: "Copy address" },
     dayRoute: { zh: "整日路線", en: "Full-day route" },
     stops: { zh: "個站點", en: " stops" },
     inspirationLink: {

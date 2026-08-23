@@ -25,8 +25,8 @@ window.TRIP_DATA = {
           theme: "廣州早班 → 蘭州取車 → 青海湖二郎劍",
           stops: [
             { id: "q1-0", name: "廣州白雲國際機場 CAN", nameKo: "Guangzhou Baiyun", time: "04:30–06:30", desc: "春秋 9C7395 · 白雲 T3 · 廉航建議起飛前 2h 到場", transport: "✈️ 9C7395 06:30", lat: 23.3924, lng: 113.2988, skipMarker: true, mapsUrl: "https://www.google.com/maps/search/?api=1&query=广州白云国际机场" },
-            { id: "q1-1", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "09:40", desc: "9C7395 抵達中川 T3 · 取行李、租 7 座", transport: "✈️ 9C7395", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场" },
-            { id: "q1-2", name: "青海湖二郎劍景區", nameKo: "Erlangjian, Qinghai Lake", time: "15:00–18:30", desc: "環線第一站 · 南岸最經典觀湖點 · 趕日落倒影 · 海拔約 3,200m，下車慢走", transport: "🚗 自駕約 3.5–4.5h / 280km", lat: 36.578633, lng: 100.495767, mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖二郎剑景区" },
+            { id: "q1-1", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "09:40", desc: "9C7395 抵達中川 T3 · 取行李、租 7 座", transport: "✈️ 9C7395", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场", address: { zh: "甘肅蘭州市永登縣中川國際機場", en: "Lanzhou Zhongchuan International Airport (LHW)" } },
+            { id: "q1-2", name: "青海湖二郎劍景區", nameKo: "Erlangjian, Qinghai Lake", time: "15:00–18:30", desc: "環線第一站 · 南岸最經典觀湖點 · 趕日落倒影 · 海拔約 3,200m，下車慢走", transport: "🚗 自駕約 3.5–4.5h / 280km", lat: 36.578633, lng: 100.495767, mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖二郎剑景区", address: { zh: "青海海南州共和縣江西溝鄉青海湖二郎劍景區", en: "Erlangjian Scenic Area, Jiangxigou, Gonghe, Qinghai Lake" } },
             { id: "q1-3", name: "卡巴倉·措瓊諾日野奢民宿", nameKo: "Kabacang", time: "19:30+", desc: "江西溝鄉下社村 · 二郎劍約 10–15 分 · 製氧機／地暖 · 確認號見「預訂」", transport: "🚗 景區周邊", lat: 36.5835, lng: 100.468, bookingId: "hotel-qinghai", mapsUrl: "https://www.google.com/maps/search/?api=1&query=青海湖卡巴仓+措琼诺日+江西沟乡下社村" },
           ],
         },
@@ -112,7 +112,7 @@ window.TRIP_DATA = {
           stops: [
             { id: "q9-1", name: "塔爾寺", nameKo: "Kumbum Monastery", time: "09:00–12:00", desc: "晚班機，上午從容參觀 · 藏傳佛教格魯派聖地 · 湟中 · 約 2–3h", transport: "🚗 西寧西南約 40 分", lat: 36.4883, lng: 101.5694, mapsUrl: "https://www.google.com/maps/search/?api=1&query=塔尔寺" },
             { id: "q9-2", name: "西寧市區午餐", nameKo: "Xining lunch", time: "12:30–14:00", desc: "釀皮／酸奶／手抓 · 晚班機不必趕", transport: "🚗 回城", lat: 36.6171, lng: 101.7782, skipMarker: true, mapsUrl: "https://www.google.com/maps/search/?api=1&query=西宁+酿皮" },
-            { id: "q9-3", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "18:30–21:00", desc: "西寧約 16:00 出發 · 還車 · 中川 T3 值機 · 9C7396 21:00 飛廣州（00:15+1 到白雲）", transport: "🚗 約 2–2.5h / 200km", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场" },
+            { id: "q9-3", name: "蘭州中川國際機場 LHW", nameKo: "Lanzhou Zhongchuan", time: "18:30–21:00", desc: "西寧約 16:00 出發 · 還車 · 中川 T3 值機 · 9C7396 21:00 飛廣州（00:15+1 到白雲）", transport: "🚗 約 2–2.5h / 200km", lat: 36.5152, lng: 103.6208, mapsUrl: "https://www.google.com/maps/search/?api=1&query=兰州中川国际机场", address: { zh: "甘肅蘭州市永登縣中川國際機場", en: "Lanzhou Zhongchuan International Airport (LHW)" } },
           ],
         },
       ],

@@ -11,6 +11,7 @@ window.PACKING_DATA = {
         { id: "c5", label: { zh: "薄羽絨或保暖棉服（湖邊／祁連夜間）", en: "Light down (lakeside / Qilian nights)" } },
         { id: "c6", label: { zh: "長袖防曬衣 + 鮮色圍巾（鹽湖拍照／擋風）", en: "Sun shirt + bright scarf (salt-lake photos / wind)" } },
         { id: "c7", label: { zh: "運動鞋（丹霞／草原）+ 可進鹽湖的舊鞋或鞋套", en: "Sneakers + old shoes or covers for salt lakes" } },
+        { id: "c8", label: { zh: "秋褲（青海湖／祁連夜間可接近 0°C）", en: "Thermal pants (Qinghai Lake / Qilian nights near 0°C)" } },
       ],
     },
     {
@@ -44,7 +45,7 @@ window.PACKING_DATA = {
       title: { zh: "高原與日用品", en: "Highland & toiletries" },
       items: [
         { id: "o1", label: { zh: "高反藥／紅景天（遵醫囑）+ 常用藥", en: "Altitude meds / rhodiola (as advised) + regular meds" } },
-        { id: "o2", label: { zh: "SPF50 防曬 + 唇膏 + 保濕霜（極乾）", en: "SPF50 + lip balm + moisturizer (very dry)" } },
+        { id: "o2", label: { zh: "SPF50 防曬 + 保濕霜（極乾）", en: "SPF50 + moisturizer (very dry)" } },
         { id: "o3", label: { zh: "墨鏡 + 寬簷帽", en: "Sunglasses + wide-brim hat" } },
         { id: "o4", label: { zh: "水壺 + 電解質飲料粉", en: "Water bottle + electrolyte powder" } },
         { id: "o5", label: { zh: "潤喉／鼻噴（鹽湖風沙）", en: "Lozenges / saline spray (salt-lake wind)" } },
@@ -52,6 +53,7 @@ window.PACKING_DATA = {
         { id: "o7", label: { zh: "車用垃圾袋（雅丹／鹽湖請把垃圾帶走）", en: "Car trash bags (pack out all rubbish)" } },
         { id: "o8", label: { zh: "少量乾糧／朱古力（Day 3 長途）", en: "Snacks / chocolate (long Day 3)" } },
         { id: "o9", label: { zh: "離線高德／百度地圖 + 紙質備援（無人區）", en: "Offline Amap/Baidu + paper backup (no signal)" } },
+        { id: "o10", label: { zh: "潤唇膏（高原／鹽湖風極乾，建議多帶）", en: "Lip balm (very dry plateau / salt-lake wind — pack extra)" } },
       ],
     },
   ],

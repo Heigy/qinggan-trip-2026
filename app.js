@@ -224,7 +224,7 @@ function hasDedicatedMyMap(regionId) {
 }
 
 function flowchartPage() {
-  return "qinggan-flowchart.html?v=6";
+  return "qinggan-flowchart.html?v=8";
 }
 
 function isMapView() {
@@ -524,6 +524,7 @@ function renderBookingsPanel() {
         b.amount
           ? `<div class="booking-meta-row"><span>${ui("bookingAmount")}</span><strong>${escapeHtml(b.amount)}</strong></div>`
           : "",
+        copyableValue(ui("bookingAddress"), locField(b.address)),
         b.phone ? copyableValue(ui("bookingPhone"), b.phone) : "",
       ].join("");
 
@@ -547,7 +548,6 @@ function renderBookingsPanel() {
         </div>
         <div class="booking-meta">${rows}</div>
         <p class="flight-tip"><strong>${ui("bookingHow")}</strong> ${locField(b.howToUse)}</p>
-        <p class="flight-tip"><strong>${ui("bookingAddress")}</strong> ${locField(b.address)}</p>
         ${b.note ? `<p class="flight-tip muted-tip">${locField(b.note)}</p>` : ""}
         ${travelers ? `<div class="flight-pax-row booking-pax">${travelers}</div>` : ""}
         <div class="booking-actions">
@@ -984,6 +984,38 @@ function stopDirectionsUrl(stop) {
   return `https://www.google.com/maps/dir/?api=1&destination=${stop.lat},${stop.lng}&travelmode=driving`;
 }
 
+function streetAddress(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value.trim();
+  return String((isEn() ? value.en : value.zh) || value.zh || value.en || "").trim();
+}
+
+function copyAddressText(value) {
+  if (!value) return "";
+  if (typeof value === "string") return value.trim();
+  return String(value.zh || value.en || "").trim();
+}
+
+function stopStreetAddress(rawStop) {
+  const own = streetAddress(rawStop.address);
+  if (own) return own;
+  const booking = typeof window.bookingForStop === "function" ? window.bookingForStop(rawStop.id) : null;
+  return streetAddress(booking?.address);
+}
+
+function stopCopyAddress(rawStop) {
+  const own = copyAddressText(rawStop.address);
+  if (own) return own;
+  const booking = typeof window.bookingForStop === "function" ? window.bookingForStop(rawStop.id) : null;
+  const fromBooking = copyAddressText(booking?.address);
+  if (fromBooking) return fromBooking;
+  try {
+    const q = new URL(stopMapsUrl(rawStop), "https://www.google.com").searchParams.get("query");
+    if (q) return q.trim();
+  } catch (_) {}
+  return "";
+}
+
 function directionsUrl(stops) {
   const pts = stops.filter((s) => !s.skipMarker && !s.optional);
   if (pts.length < 2) return null;
@@ -1273,6 +1305,8 @@ function renderSidebar() {
       rawStop.optional ? `<span class="stop-optional-badge">${ui("optionalBadge")}</span>` : "",
       booking ? `<span class="stop-booking-badge">${ui("bookingBadge")}</span>` : "",
     ].join("");
+    const addr = stopStreetAddress(rawStop);
+    const copyAddr = stopCopyAddress(rawStop);
     const el = document.createElement("div");
     el.className =
       "stop-item" +
@@ -1287,21 +1321,24 @@ function renderSidebar() {
         ${rawStop.nameKo ? `<div class="stop-ko">${rawStop.nameKo}</div>` : ""}
         <div class="stop-desc">${stop.desc}</div>
         ${stop.transport && stop.transport !== "—" ? `<div class="stop-transport">${stop.transport}</div>` : ""}
+        ${addr ? `<div class="stop-address">${escapeHtml(addr)}</div>` : ""}
         <div class="stop-actions">
           <a href="#" class="stop-focus">${ui("mapLocate")}</a>
           <a href="${stopMapsUrl(rawStop)}" target="_blank" rel="noopener">${ui("googleMaps")}</a>
           <a href="${stopDirectionsUrl(rawStop)}" target="_blank" rel="noopener">${ui("navigate")}</a>
+          ${copyAddr ? `<button type="button" class="copy-btn stop-copy-addr" data-copy="${escapeHtml(copyAddr)}" title="${escapeHtml(copyAddr)}">${ui("copyAddress")}</button>` : ""}
           ${rawStop.infoUrl ? `<a href="${rawStop.infoUrl}" class="stop-info" data-open="${rawStop.infoUrl}" target="_blank" rel="noopener noreferrer">${ui("stopInfo")}</a>` : ""}
         </div>
       </div>`;
     el.addEventListener("click", (e) => {
-      if (e.target.closest("a") && !e.target.classList.contains("stop-focus")) return;
+      if (e.target.closest("a, button") && !e.target.classList.contains("stop-focus")) return;
       e.preventDefault();
       focusStop(stop.id);
     });
     list.appendChild(el);
   });
   wireOpenButtons(list);
+  wireCopyButtons(list);
 }
 
 function focusStop(stopId) {
