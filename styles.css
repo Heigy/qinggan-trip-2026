@@ -238,7 +238,8 @@ header .subtitle {
   transition: background 0.25s, border-color 0.25s;
 }
 
-.flights-bar span {
+.flights-bar span,
+.flights-bar .notes-alert {
   display: inline-flex;
   align-items: center;
   gap: 6px;
@@ -252,19 +253,32 @@ header .subtitle {
   letter-spacing: 0.01em;
 }
 
+.flights-bar .notes-alert {
+  cursor: pointer;
+  font: inherit;
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+}
+
+.flights-bar .notes-alert:hover {
+  border-color: color-mix(in srgb, #c45c26 50%, var(--flights-border));
+}
+
 .flights-bar .flight-code {
   font-weight: 600;
   color: var(--accent);
 }
 
-.flights-bar .weather-alert {
+.flights-bar .weather-alert,
+.flights-bar .notes-alert {
   border-color: color-mix(in srgb, #c45c26 35%, var(--flights-border));
   background: color-mix(in srgb, #c45c26 12%, var(--flights-chip-bg));
   color: var(--text);
   max-width: 100%;
 }
 
-.flights-bar .weather-alert strong {
+.flights-bar .weather-alert strong,
+.flights-bar .notes-alert strong {
   color: #c45c26;
   font-weight: 700;
 }
@@ -1080,6 +1094,59 @@ button.flight-pnr.is-masked {
   text-decoration-thickness: 1px;
 }
 
+.notes-list {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  max-width: 720px;
+}
+
+.note-card {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px 14px;
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 14px;
+  padding: 16px 16px 16px 14px;
+}
+
+.note-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #c45c26;
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 2px;
+}
+
+.note-when {
+  margin: 0 0 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: #c45c26;
+}
+
+.note-body h3 {
+  margin: 0 0 8px;
+  font-family: var(--font-display);
+  font-size: 1.02rem;
+  font-weight: 600;
+}
+
+.note-body p {
+  margin: 0;
+  font-size: 0.88rem;
+  line-height: 1.55;
+  color: var(--text);
+}
+
 /* ── Cost panel ── */
 .cost-summary {
   display: grid;
@@ -1734,6 +1801,7 @@ button.flight-pnr.is-masked {
   body.view-bookings .sidebar,
   body.view-food .sidebar,
   body.view-pack .sidebar,
+  body.view-notes .sidebar,
   body.view-cost .sidebar {
     order: 2;
   }

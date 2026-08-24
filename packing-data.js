@@ -54,6 +54,7 @@ window.PACKING_DATA = {
         { id: "o8", label: { zh: "少量乾糧／朱古力（Day 3 長途）", en: "Snacks / chocolate (long Day 3)" } },
         { id: "o9", label: { zh: "離線高德／百度地圖 + 紙質備援（無人區）", en: "Offline Amap/Baidu + paper backup (no signal)" } },
         { id: "o10", label: { zh: "潤唇膏（高原／鹽湖風極乾，建議多帶）", en: "Lip balm (very dry plateau / salt-lake wind — pack extra)" } },
+        { id: "o11", label: { zh: "U 形枕（早班飛機＋長途自駕輪換休息）", en: "U-shaped neck pillow (early flight + long driving shifts)" } },
       ],
     },
   ],

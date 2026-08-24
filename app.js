@@ -1,4 +1,4 @@
-/* global TRIP_DATA, MYMAPS_CONFIG, I18N, FLIGHT_DATA, BOOKING_DATA, FOOD_DATA, PACKING_DATA, WEATHER_DATA, COST_DATA */
+/* global TRIP_DATA, MYMAPS_CONFIG, I18N, FLIGHT_DATA, BOOKING_DATA, FOOD_DATA, PACKING_DATA, NOTES_DATA, WEATHER_DATA, COST_DATA */
 
 const state = {
   regionId: "qinggan",
@@ -35,6 +35,7 @@ else if (urlParams.get("view") === "flights") state.view = "flights";
 else if (urlParams.get("view") === "bookings") state.view = "bookings";
 else if (urlParams.get("view") === "food") state.view = "food";
 else if (urlParams.get("view") === "pack") state.view = "pack";
+else if (urlParams.get("view") === "notes") state.view = "notes";
 else if (urlParams.get("view") === "cost") state.view = "cost";
 else if (urlParams.get("view") === "flowchart") state.view = "flowchart";
 /* else keep default map */
@@ -224,7 +225,7 @@ function hasDedicatedMyMap(regionId) {
 }
 
 function flowchartPage() {
-  return "qinggan-flowchart.html?v=9";
+  return "qinggan-flowchart.html?v=11";
 }
 
 function isMapView() {
@@ -251,6 +252,10 @@ function isPackView() {
   return state.view === "pack";
 }
 
+function isNotesView() {
+  return state.view === "notes";
+}
+
 function isCostView() {
   return state.view === "cost";
 }
@@ -261,6 +266,7 @@ function setView(view) {
   else if (view === "bookings") state.view = "bookings";
   else if (view === "food") state.view = "food";
   else if (view === "pack") state.view = "pack";
+  else if (view === "notes") state.view = "notes";
   else if (view === "cost") state.view = "cost";
   else state.view = "map";
   if (state.view !== "map") {
@@ -725,6 +731,30 @@ function renderPackPanel() {
   });
 }
 
+function renderNotesPanel() {
+  const root = document.getElementById("notes-content");
+  if (!root || !window.NOTES_DATA) return;
+
+  const cards = (NOTES_DATA.items || [])
+    .map((n, i) => `
+      <article class="note-card">
+        <div class="note-num" aria-hidden="true">${i + 1}</div>
+        <div class="note-body">
+          <p class="note-when">${escapeHtml(locField(n.when))}</p>
+          <h3>${escapeHtml(locField(n.title))}</h3>
+          <p>${escapeHtml(locField(n.body))}</p>
+        </div>
+      </article>`)
+    .join("");
+
+  root.innerHTML = `
+    <div class="flights-intro">
+      <h2>${ui("notesOverview")}</h2>
+      <p class="flights-pax-label">${ui("notesHint")}</p>
+    </div>
+    <div class="notes-list">${cards}</div>`;
+}
+
 function formatMoneyHkd(n) {
   if (n == null || Number.isNaN(n)) return "—";
   return `HK$ ${Number(n).toLocaleString(isEn() ? "en-US" : "zh-HK", { minimumFractionDigits: 0, maximumFractionDigits: 0 })}`;
@@ -840,6 +870,7 @@ function applyView() {
   const bookingsPanel = document.getElementById("bookings-panel");
   const foodPanel = document.getElementById("food-panel");
   const packPanel = document.getElementById("pack-panel");
+  const notesPanel = document.getElementById("notes-panel");
   const costPanel = document.getElementById("cost-panel");
   const restoreBtn = document.getElementById("map-restore");
   const externalLink = document.getElementById("map-open-external");
@@ -849,6 +880,7 @@ function applyView() {
   document.body.classList.toggle("view-bookings", isBookingsView());
   document.body.classList.toggle("view-food", isFoodView());
   document.body.classList.toggle("view-pack", isPackView());
+  document.body.classList.toggle("view-notes", isNotesView());
   document.body.classList.toggle("view-cost", isCostView());
   document.body.classList.toggle("view-flowchart", isFlowchartView());
   document.body.classList.toggle("view-map", isMapView());
@@ -866,6 +898,8 @@ function applyView() {
               ? "viewFood"
               : btn.dataset.view === "pack"
                 ? "viewPack"
+                : btn.dataset.view === "notes"
+                  ? "viewNotes"
                 : btn.dataset.view === "cost"
                   ? "viewCost"
                   : "viewFlights";
@@ -878,6 +912,7 @@ function applyView() {
   bookingsPanel?.classList.toggle("active", isBookingsView());
   foodPanel?.classList.toggle("active", isFoodView());
   packPanel?.classList.toggle("active", isPackView());
+  notesPanel?.classList.toggle("active", isNotesView());
   costPanel?.classList.toggle("active", isCostView());
 
   if (isMapView()) {
@@ -924,6 +959,11 @@ function applyView() {
     externalLink.hidden = true;
     label.textContent = ui("packOverview");
     renderPackPanel();
+  } else if (isNotesView()) {
+    restoreBtn.hidden = true;
+    externalLink.hidden = true;
+    label.textContent = ui("notesOverview");
+    renderNotesPanel();
   } else {
     restoreBtn.hidden = true;
     externalLink.hidden = true;
@@ -1133,7 +1173,7 @@ function renderSidebar() {
   const weatherTipEl = document.getElementById("sidebar-weather-tip");
   const wx = window.WEATHER_DATA?.days?.[rawDay.id || day.id];
   if (weatherEl && weatherTipEl) {
-    if (wx && !isFlightsView() && !isBookingsView() && !isFoodView() && !isPackView() && !isCostView()) {
+    if (wx && !isFlightsView() && !isBookingsView() && !isFoodView() && !isPackView() && !isNotesView() && !isCostView()) {
       weatherEl.hidden = false;
       weatherTipEl.hidden = false;
       weatherEl.textContent = `${ui("weatherLabel")} ${locField(wx.summary)}`;
@@ -1154,6 +1194,8 @@ function renderSidebar() {
     dayHint.textContent = ui("foodHint");
   } else if (isPackView()) {
     dayHint.textContent = ui("packHint");
+  } else if (isNotesView()) {
+    dayHint.textContent = ui("notesHint");
   } else if (isCostView()) {
     dayHint.textContent = ui("costHint");
   } else if (isFlowchartView()) {
@@ -1376,7 +1418,14 @@ function renderHeader() {
   const alertHtml = alert
     ? `<span class="weather-alert" title="${escapeHtml(locField(alert.detail))}"><strong>${ui("weatherAlertLabel")}</strong> ${escapeHtml(locField(alert.title))}</span>`
     : "";
-  document.getElementById("flights-bar").innerHTML = `${flightsHtml}${alertHtml}`;
+  const notesChip = window.NOTES_DATA
+    ? `<button type="button" class="weather-alert notes-alert" data-open-notes title="${escapeHtml(ui("notesHint"))}"><strong>${ui("notesAlertLabel")}</strong> ${escapeHtml(ui("notesAlertTitle"))}</button>`
+    : "";
+  document.getElementById("flights-bar").innerHTML = `${flightsHtml}${alertHtml}${notesChip}`;
+  document.querySelector("[data-open-notes]")?.addEventListener("click", (e) => {
+    e.preventDefault();
+    setView("notes");
+  });
 }
 
 function renderSetupPanel() {
@@ -1401,7 +1450,7 @@ function updateUrl() {
   else url.searchParams.delete("plan");
   if (state.lang === "en") url.searchParams.set("lang", "en");
   else url.searchParams.delete("lang");
-  if (state.view === "flights" || state.view === "bookings" || state.view === "food" || state.view === "pack" || state.view === "cost" || state.view === "flowchart") {
+  if (state.view === "flights" || state.view === "bookings" || state.view === "food" || state.view === "pack" || state.view === "notes" || state.view === "cost" || state.view === "flowchart") {
     url.searchParams.set("view", state.view);
   } else {
     url.searchParams.delete("view");

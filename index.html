@@ -7,7 +7,7 @@
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
   <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;600&family=Noto+Serif+TC:wght@500;600;700&display=swap" rel="stylesheet" />
-  <link rel="stylesheet" href="styles.css?v=9" />
+  <link rel="stylesheet" href="styles.css?v=11" />
   <script>
     (function () {
       try {
@@ -17,15 +17,16 @@
       } catch (_) {}
     })();
   </script>
-  <script src="config.js?v=9"></script>
-  <script src="trip-data.js?v=9"></script>
-  <script src="flight-data.js?v=9"></script>
-  <script src="booking-data.js?v=9"></script>
-  <script src="food-data.js?v=9"></script>
-  <script src="packing-data.js?v=9"></script>
-  <script src="cost-data.js?v=9"></script>
-  <script src="weather-data.js?v=9"></script>
-  <script src="i18n.js?v=9"></script>
+  <script src="config.js?v=11"></script>
+  <script src="trip-data.js?v=11"></script>
+  <script src="flight-data.js?v=11"></script>
+  <script src="booking-data.js?v=11"></script>
+  <script src="food-data.js?v=11"></script>
+  <script src="packing-data.js?v=11"></script>
+  <script src="notes-data.js?v=11"></script>
+  <script src="cost-data.js?v=11"></script>
+  <script src="weather-data.js?v=11"></script>
+  <script src="i18n.js?v=11"></script>
 </head>
 <body>
   <div id="app">
@@ -58,6 +59,7 @@
             <button type="button" data-view="cost">費用</button>
             <button type="button" data-view="food">美食</button>
             <button type="button" data-view="pack">行李</button>
+            <button type="button" data-view="notes">注意</button>
           </div>
           <span class="map-toolbar-label" id="map-mode-label">My Maps 總覽</span>
           <div class="map-toolbar-actions">
@@ -119,6 +121,9 @@
         <div id="pack-panel" class="content-panel">
           <div class="flights-scroll" id="pack-content"></div>
         </div>
+        <div id="notes-panel" class="content-panel">
+          <div class="flights-scroll" id="notes-content"></div>
+        </div>
       </div>
 
       <aside class="sidebar">
@@ -147,6 +152,6 @@
     </div>
   </div>
 
-  <script src="app.js?v=9"></script>
+  <script src="app.js?v=11"></script>
 </body>
 </html>

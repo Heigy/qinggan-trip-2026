@@ -47,6 +47,7 @@ window.I18N = {
     viewBookings: { zh: "預訂", en: "Bookings" },
     viewFood: { zh: "美食", en: "Food" },
     viewPack: { zh: "行李", en: "Pack" },
+    viewNotes: { zh: "注意", en: "Notes" },
     viewCost: { zh: "費用", en: "Costs" },
     costOverview: { zh: "旅遊費用總結", en: "Trip cost summary" },
     costHint: {
@@ -69,6 +70,13 @@ window.I18N = {
     },
     packProgress: { zh: "已打包", en: "Packed" },
     packReset: { zh: "全部取消勾選", en: "Uncheck all" },
+    notesOverview: { zh: "自駕注意事項", en: "Self-drive notes" },
+    notesHint: {
+      zh: "取車與無人區必讀 · 和行李清單分開，出發前再看一遍",
+      en: "Read before pickup and the empty stretch · separate from packing",
+    },
+    notesAlertLabel: { zh: "自駕注意", en: "Drive notes" },
+    notesAlertTitle: { zh: "全險 · 玻璃 · 離線地圖 · 油料", en: "Insurance · glass · offline maps · fuel" },
     foodOverview: { zh: "青甘美食 List", en: "Qinghai–Gansu food list" },
     foodHint: {
       zh: "彈性備選 · 點地址開地圖 · ★ 已排進行程的會標出",
